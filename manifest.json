@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "yad2 AdBlocker Fix",
+  "description": "Remove AdBlock detection in yad2",
+  "version": "0.1",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "block.js"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.yad2.co.il/*",
+        "http://*.ynet.co.il/*"
+      ],
+      "run_at": "document_start",
+      "js": ["jquery.min.js","content.js"]
+    }
+  ]
+}
